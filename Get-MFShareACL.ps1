@@ -12,6 +12,7 @@ function Get-GSKShareACL {
 
         $Script:userSID = ''
         $Script:user = ''
+        $domain = '' #Insert AD Domain name to split from usernames in here.
 
 
         Write-Host "Gathering Folders..."
@@ -45,7 +46,7 @@ function Get-GSKShareACL {
 
             foreach ($u in $access.Access) {
 
-                if ($u.IdentityReference -like "WMSERVICE*") {
+                if ($u.IdentityReference -like "$domain") {
                     Try {
                         [String]$uIdent = $u.IdentityReference
                         $displayName = get-aduser $uIdent.split("\")[1] -Properties DisplayName | Select-Object DisplayName
