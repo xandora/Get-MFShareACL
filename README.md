@@ -1,2 +1,2 @@
 # Get-MFShareACL
-Gets Folder ACLs and generates a CSV report with usernames and permissions
+Gets Folder ACLs and generates a CSV report with folders, usernames, and permissions
