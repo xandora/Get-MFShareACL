@@ -8,13 +8,12 @@
 
     Begin {
     
-        $startTime = Get-Date -Format HH:mm:ss
-        
+        $stopWatch = [System.Diagnostics.Stopwatch]::StartNew()    
         . $PSScriptRoot\Get-LocalGroup.ps1
 
         $Script:userSID = ''
         $Script:user = ''
-        $domain = '' #Insert AD Domain name to split from usernames in here.
+        $domain = 'BAT' #Insert AD Domain name to split from usernames in here.
 
         Write-Host "Gathering Folders from $Path..."
 
@@ -103,9 +102,8 @@
     }
 
     End {
-        $finishTime = Get-Date -Format HH:mm:ss
-        $runTime = Get-Date - $startTime
-        Write-Output "Script completed in: $($runTime.Hour) : $($runTime.Minute) : $($runTime.Second)"
+        $stopWatch.Stop()
+        Write-Output "Script completed in: $($stopWatch.Elapsed.Hours) : $($stopWatch.Elapsed.Minutes) : $($stopWatch.Elapsed.Seconds)"
     }
 
 }
