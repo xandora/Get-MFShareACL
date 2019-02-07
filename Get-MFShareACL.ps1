@@ -1,4 +1,4 @@
-﻿function Get-BATShareACL {
+﻿function Get-MFShareACL {
     [CmdletBinding()]
     Param(
         # Target Path
@@ -14,7 +14,7 @@
 
         $Script:userSID = ''
         $Script:user = ''
-        $domain = 'BAT' #Insert AD Domain name to split from usernames in here.
+        $domain = '' #Insert AD Domain name to split from usernames in here.
 
         Write-Host "Gathering Folders from $Path..."
 
@@ -110,4 +110,4 @@
 
 }
 
-Get-BATShareACL
+Get-MFShareACL
